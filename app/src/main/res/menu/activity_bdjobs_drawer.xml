@@ -1,37 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/result"
+            android:icon="@mipmap/ic_favorite_black_24dp"
+            android:title="Educationboardresults" />
+
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/new_jobs"
+            android:icon="@mipmap/ic_today_black_18dp"
+            android:title="New Jobs(24hrs)" />
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/notice"
+            android:icon="@mipmap/ic_note_add_black_24dp"
+            android:title="Jobs Notice" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/bcs_notice"
+            android:icon="@mipmap/ic_note_add_black_24dp"
+            android:title="BCS Notice" />
+
     </group>
 
-    <item android:title="Communicate">
+
+
+    <item android:title="Recommended Category">
+        <menu>
+
+            <item
+                android:id="@+id/govt_jobs"
+                android:icon="@mipmap/ic_loyalty_black_24dp"
+                android:title="Govt Jobs" />
+
+
+            <item
+                android:id="@+id/non_govt_jobs"
+                android:icon="@mipmap/ic_loyalty_black_24dp"
+                android:title="Non Govt Jobs" />
+            <item
+                android:id="@+id/it_jobs"
+                android:icon="@drawable/ic_menu_send"
+                android:title="IT Jobs" />
+
+            <item
+                android:id="@+id/engineering_jobs"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Engineering/Architech" />
+            <item
+                android:id="@+id/textile_jobs"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Textile Jobs" />
+
+            <item
+                android:id="@+id/marketing_jobs"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Marketing/Sales" />
+
+
+            <item
+                android:id="@+id/bank_jobs"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Bank Jobs" />
+            <item
+                android:id="@+id/forreign_jobs"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Foreign Jobs" />
+
+        </menu>
+    </item>
+
+
+    <item android:title="Islamic Site">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/reciteQuran"
+                android:icon="@mipmap/ic_open_in_new_black_24dp"
+                android:title="tanzil.net" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/Quran"
+                android:icon="@mipmap/ic_open_in_new_black_24dp"
+                android:title="quran.com" />
+
         </menu>
     </item>
 

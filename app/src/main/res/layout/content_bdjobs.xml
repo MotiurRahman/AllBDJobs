@@ -1,11 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="motiur_bdjobs.bd.com.allbdjobs.BDJobsActivity"
     tools:showIn="@layout/app_bar_bdjobs">
 
-</android.support.constraint.ConstraintLayout>
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:fillViewport="true">
+
+
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:paddingRight="10dp"
+            android:orientation="vertical">
+
+            <!--&lt;!&ndash; view for AdMob Interstitial Ad &ndash;&gt;-->
+            <!--<TextView-->
+                <!--android:id="@+id/app_title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+            <ImageButton
+                android:id="@+id/btn11"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/govt"
+                android:layout_weight="1.0"
+                android:padding="20dp"
+                android:onClick="govjob"></ImageButton>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp">
+
+                <ImageButton
+                    android:id="@+id/btn1"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/bdjobs1"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginRight="20dp"
+                    android:onClick="bdJobs"></ImageButton>
+
+                <ImageButton
+                    android:id="@+id/btn2"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/chakri"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="chakri"></ImageButton>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp">
+
+
+                <ImageButton
+                    android:id="@+id/btn3"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/career"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginRight="20dp"
+                    android:onClick="bdcareer"></ImageButton>
+
+                <ImageButton
+                    android:id="@+id/btn12"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/chakibd"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginRight="20dp"
+                    android:onClick="chakri_bd"></ImageButton>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp">
+
+                <ImageButton
+                    android:id="@+id/btn5"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/chakrirkhobor"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginRight="20dp"
+                    android:onClick="chakrirkhobor"></ImageButton>
+
+                <ImageButton
+                    android:id="@+id/btn6"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/newbdjobs"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="newbdjobs"></ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp">
+
+
+                <ImageButton
+                    android:id="@+id/btn7"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/bdcareerorg"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginRight="20dp"
+                    android:onClick="bdcareerorg"></ImageButton>
+
+
+
+                <ImageButton
+                    android:id="@+id/btn8"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/noyadigonto"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="noyadigonto"></ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp">
+
+
+                <ImageButton
+                    android:id="@+id/btn9"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/ejobs"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginRight="20dp"
+                    android:onClick="ejobs"></ImageButton>
+
+                <ImageButton
+                    android:id="@+id/btn10"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/banglajobs"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="banglajobs"></ImageButton>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp">
+
+
+                <ImageButton
+                    android:id="@+id/btn4"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/jobbd"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="jobsbd"></ImageButton>
+
+                <ImageButton
+                    android:id="@+id/btn13"
+                    android:layout_width="0.0dip"
+                    android:layout_height="77dp"
+                    android:background="@drawable/bdjobstoday"
+                    android:layout_weight="1.0"
+                    android:padding="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="bdjobstoday"></ImageButton>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView_main"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id" />
+
+
+</RelativeLayout>

@@ -1,11 +1,10 @@
 package motiur_bdjobs.bd.com.allbdjobs;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -34,8 +34,12 @@ public class webActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+
 
         ActionBar motiurbar=getSupportActionBar();
+        motiurbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0C9119")));
         if (motiurbar != null) {
             motiurbar.setDisplayHomeAsUpEnabled(true);
             motiurbar.setHomeAsUpIndicator(R.mipmap.ic_launcher);
@@ -176,6 +180,7 @@ public class webActivity extends AppCompatActivity {
         if (id == R.id.home) {
 
            finish();
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         }
 

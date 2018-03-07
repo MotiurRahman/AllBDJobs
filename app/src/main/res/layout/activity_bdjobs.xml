@@ -19,6 +19,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:theme="@style/drawerTheam_test"
         app:headerLayout="@layout/nav_header_bdjobs"
         app:menu="@menu/activity_bdjobs_drawer" />
 

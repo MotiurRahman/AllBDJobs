@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "29117335249",
+    "firebase_url": "https://pushcustomer-c978a.firebaseio.com",
+    "project_id": "pushcustomer-c978a",
+    "storage_bucket": "pushcustomer-c978a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29117335249:android:8702750cf8e3af40",
+        "android_client_info": {
+          "package_name": "com.bd.PushCustomer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29117335249-bbqnap1c64tpeun7acbuah140t1kcfql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnKUSP0BeYvZSdsD7Ay7Uh4Hi0ceXN7WA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29117335249:android:304d9c5e9e786d9f",
+        "android_client_info": {
+          "package_name": "motiur_bdjobs.bd.com.allbdjobs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29117335249-bbqnap1c64tpeun7acbuah140t1kcfql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnKUSP0BeYvZSdsD7Ay7Uh4Hi0ceXN7WA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
