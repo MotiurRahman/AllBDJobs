@@ -1,6 +1,7 @@
 package motiur_bdjobs.bd.com.allbdjobs;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -28,6 +29,7 @@ public class webActivity extends AppCompatActivity {
 
     WebView webView;
     ProgressBar proBar;
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,7 @@ public class webActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 
-
-        ActionBar motiurbar=getSupportActionBar();
+        ActionBar motiurbar = getSupportActionBar();
         motiurbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0C9119")));
         if (motiurbar != null) {
             motiurbar.setDisplayHomeAsUpEnabled(true);
@@ -50,11 +51,11 @@ public class webActivity extends AppCompatActivity {
         if (isNetworkConnected()) {
 
         } else {
-            Toast.makeText(getApplicationContext(),"No internet connection",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
         }
 
         // Webview
-        webView = (WebView)findViewById(R.id.web);
+        webView = (WebView) findViewById(R.id.web);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
@@ -86,16 +87,15 @@ public class webActivity extends AppCompatActivity {
         webView.loadUrl(URL);
         webView.setWebViewClient(new mywebClient());
 
-        proBar = (ProgressBar)findViewById(R.id.progressBar1);
-
+        proBar = (ProgressBar) findViewById(R.id.progressBar1);
 
 
         // Load an ad into the AdMob banner view.
-        AdView adView = (AdView) findViewById(R.id.adView);
+        adView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .setRequestAgent("android_studio:ad_template").build();
         adView.loadAd(adRequest);
-       MobileAds.initialize(this, "ca-app-pub-4951262838901192~9336209793");
+        MobileAds.initialize(this, "ca-app-pub-4951262838901192~9336209793");
 
 
     }
@@ -159,6 +159,39 @@ public class webActivity extends AppCompatActivity {
     //End internet connection
 
 
+    /**
+     * Called when leaving the activity
+     */
+    @Override
+    public void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    /**
+     * Called when returning to the activity
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    /**
+     * Called before the activity is destroyed
+     */
+    @Override
+    public void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
+    }
+
 
     //For menu view
 
@@ -179,16 +212,27 @@ public class webActivity extends AppCompatActivity {
 
         if (id == R.id.home) {
 
-           finish();
+            finish();
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         }
+
+        if (id == R.id.linkshare) {
+
+            //finish();
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, webView.getUrl());
+            startActivity(Intent.createChooser(shareIntent, "Share This!"));
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
 
     //End menu view
-
 
 
 }

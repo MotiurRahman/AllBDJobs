@@ -3,10 +3,10 @@ package motiur_bdjobs.bd.com.allbdjobs;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -29,20 +30,20 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
-import java.io.File;
-
 public class BDJobsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-//    public static String FACEBOOK_URL = "https://www.facebook.com/chakrirkhobornets/";
+    //    public static String FACEBOOK_URL = "https://www.facebook.com/chakrirkhobornets/";
 //    public static String FACEBOOK_PAGE_ID = "381462145568985";
-    public Animation myAnim;
+    private Animation myAnim;
+    private  Animation hyperspaceJumpAnimation;
 
 
     ImageButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13;
 
 
     private InterstitialAd mInterstitialAd;
+    AdView adView;
 
 
     @Override
@@ -73,8 +74,15 @@ public class BDJobsActivity extends AppCompatActivity
         btn12 = (ImageButton) findViewById(R.id.btn11);
         btn13 = (ImageButton) findViewById(R.id.btn11);
 
+        // Animation
+
         myAnim = AnimationUtils.loadAnimation(this, R.anim.milkshake);
-        btn11.setAnimation(myAnim);
+       // btn11.setAnimation(myAnim);
+
+         hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.motiur_anim);
+        btn11.startAnimation(hyperspaceJumpAnimation);
+
+        //End Animation
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -89,14 +97,15 @@ public class BDJobsActivity extends AppCompatActivity
 
         // Load an ad into the AdMob banner view.
         MobileAds.initialize(this, "ca-app-pub-4951262838901192~9336209793");
-        AdView adView = (AdView) findViewById(R.id.adView_main);
+        adView = (AdView) findViewById(R.id.adView_main);
+        // adView.setAdSize(AdSize.SMART_BANNER);
+
         AdRequest adRequest = new AdRequest.Builder()
                 .setRequestAgent("android_studio:ad_template").build();
         adView.loadAd(adRequest);
 
 
-
-       // Interestitial Ad
+        // Interestitial Ad
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
@@ -114,6 +123,39 @@ public class BDJobsActivity extends AppCompatActivity
 
     }
 
+
+    /**
+     * Called when leaving the activity
+     */
+    @Override
+    public void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    /**
+     * Called when returning to the activity
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    /**
+     * Called before the activity is destroyed
+     */
+    @Override
+    public void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
+    }
 
 
     public void govjob(View view) {
@@ -143,7 +185,8 @@ public class BDJobsActivity extends AppCompatActivity
         } else {
             Log.d("TAG", "The interstitial wasn't loaded yet.");
         }
-        view.startAnimation(myAnim);
+       view.startAnimation(myAnim);
+
 
         // String webURL = "http://jobs.bdjobs.com/jobsearch.asp";
         String webURL = "http://jobs.bdjobs.com/m/searchcategories.aspx";
@@ -163,6 +206,7 @@ public class BDJobsActivity extends AppCompatActivity
             Log.d("TAG", "The interstitial wasn't loaded yet.");
         }
         view.startAnimation(myAnim);
+
 
         String webURL = "http://www.chakri.com/";
 
@@ -359,6 +403,21 @@ public class BDJobsActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        // Locate MenuItem with ShareActionProvider
+        MenuItem item = menu.findItem(R.id.action_share);
+        // Fetch and store ShareActionProvider
+        ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+
+        if (mShareActionProvider != null) {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=motiur_bdjobs.bd.com.allbdjobs");
+            shareIntent.setType("text/plain");
+            mShareActionProvider.setShareIntent(shareIntent);
+        }
+
+
         return true;
     }
 
@@ -367,6 +426,8 @@ public class BDJobsActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
+
         int id = item.getItemId();
 
 //        if (id == R.id.action_facebook) {
@@ -411,25 +472,6 @@ public class BDJobsActivity extends AppCompatActivity
 
 
         }
-
-//        if (id == R.id.shareAPK) {
-//            ApplicationInfo app = getApplicationContext().getApplicationInfo();
-//            String filePath = app.sourceDir;
-//
-//            Intent intent = new Intent(Intent.ACTION_SEND);
-//
-//            // MIME of .apk is "application/vnd.android.package-archive".
-//            // but Bluetooth does not accept this. Let's use "*/*" instead.
-//            intent.setType("*/*");
-//
-//
-//            // Append file and send Intent
-//            intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(filePath)));
-//            startActivity(Intent.createChooser(intent, "Share app via"));
-//
-//
-//        }
-
 
         return super.onOptionsItemSelected(item);
     }
@@ -488,7 +530,21 @@ public class BDJobsActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.result) {
+        if (id == R.id.primary) {
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            } else {
+                Log.d("TAG", "The interstitial wasn't loaded yet.");
+            }
+            // Handle the camera action
+
+            String webURL = "http://dperesult.teletalk.com.bd/dpe.php";
+
+            Intent intent = new Intent(getApplicationContext(), webActivity.class);
+            intent.putExtra("URL", webURL);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        } else if (id == R.id.result) {
             if (mInterstitialAd.isLoaded()) {
                 mInterstitialAd.show();
             } else {
@@ -497,6 +553,20 @@ public class BDJobsActivity extends AppCompatActivity
             // Handle the camera action
 
             String webURL = "http://www.educationboardresults.gov.bd/";
+
+            Intent intent = new Intent(getApplicationContext(), webActivity.class);
+            intent.putExtra("URL", webURL);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        } else if (id == R.id.nuresult) {
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            } else {
+                Log.d("TAG", "The interstitial wasn't loaded yet.");
+            }
+            // Handle the camera action
+
+            String webURL = "http://www.nu.edu.bd/results/";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
             intent.putExtra("URL", webURL);

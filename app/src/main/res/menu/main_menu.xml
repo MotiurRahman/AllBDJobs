@@ -4,21 +4,27 @@
     tools:context="motiur_bdjobs.bd.com.allbdjobs.test">
 
 
+    <item
+        android:id="@+id/action_share"
+        android:icon="@mipmap/ic_share_black_24dp"
+        android:title="@string/action_ratings"
+        app:showAsAction="always"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
+
+
 
     <item
         android:id="@+id/action_ratings"
         android:orderInCategory="200"
         android:icon="@mipmap/ic_star_rate_black_18dp"
         android:title="@string/action_ratings"
-        app:showAsAction="never"
-        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/action_apps"
         android:orderInCategory="300"
         android:icon="@mipmap/ic_note_add_black_24dp"
         android:title="@string/action_apps"
-        app:showAsAction="never"
-        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
+        app:showAsAction="never"/>
 
 </menu>

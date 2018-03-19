@@ -8,5 +8,10 @@
         android:title="@string/home"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/linkshare"
+        android:orderInCategory="100"
+        android:title="Share the jobs link"
+        app:showAsAction="never" />
 
 </menu>

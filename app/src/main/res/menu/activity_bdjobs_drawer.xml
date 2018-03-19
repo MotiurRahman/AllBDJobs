@@ -4,27 +4,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/result"
-            android:icon="@mipmap/ic_favorite_black_24dp"
-            android:title="Educationboardresults" />
+    <item android:title="All BD Results">
+        <menu>
+            <item
+                android:id="@+id/primary"
+                android:icon="@mipmap/ic_favorite_black_24dp"
+                android:title="PSC/Ebtedayee" />
+            <item
+                android:id="@+id/result"
+                android:icon="@mipmap/ic_favorite_black_24dp"
+                android:title="JSC/SSC/HSC" />
 
-        <item
-            android:id="@+id/new_jobs"
-            android:icon="@mipmap/ic_today_black_18dp"
-            android:title="New Jobs(24hrs)" />
+            <item
+                android:id="@+id/nuresult"
+                android:icon="@mipmap/ic_favorite_black_24dp"
+                android:title="NU Results" />
+        </menu>
+    </item>
 
-        <item
-            android:id="@+id/notice"
-            android:icon="@mipmap/ic_note_add_black_24dp"
-            android:title="Jobs Notice" />
-        <item
-            android:id="@+id/bcs_notice"
-            android:icon="@mipmap/ic_note_add_black_24dp"
-            android:title="BCS Notice" />
 
-    </group>
+    <item android:title="Recent Job/ Notice">
+        <menu>
+            <item
+                android:id="@+id/new_jobs"
+                android:icon="@mipmap/ic_today_black_18dp"
+                android:title="New Jobs(24hrs)" />
+
+            <item
+                android:id="@+id/notice"
+                android:icon="@mipmap/ic_note_add_black_24dp"
+                android:title="Jobs Notice" />
+            <item
+                android:id="@+id/bcs_notice"
+                android:icon="@mipmap/ic_note_add_black_24dp"
+                android:title="BCS Notice" />
+        </menu>
+    </item>
+
+    <!--<group android:checkableBehavior="single">-->
+
+        <!--<item-->
+            <!--android:id="@+id/primary"-->
+            <!--android:icon="@mipmap/ic_favorite_black_24dp"-->
+            <!--android:title="Primary/Eptadai" />-->
+        <!--<item-->
+            <!--android:id="@+id/result"-->
+            <!--android:icon="@mipmap/ic_favorite_black_24dp"-->
+            <!--android:title="JSC/SSC/HSC" />-->
+
+        <!--<item-->
+            <!--android:id="@+id/nuresult"-->
+            <!--android:icon="@mipmap/ic_favorite_black_24dp"-->
+            <!--android:title="NU Results" />-->
+
+    <!--</group>-->
 
 
 
