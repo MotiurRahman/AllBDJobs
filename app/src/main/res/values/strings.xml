@@ -4,6 +4,8 @@
     <string name="action_apps">More Apps</string>
     <string name="home">Home</string>
     <string name="action_ratings">Give 5 Star Please</string>
+    <string name="share">share</string>
+
 
     <!-- -
         This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.

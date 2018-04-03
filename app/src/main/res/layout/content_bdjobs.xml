@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="@drawable/backimg"
+    android:background="@mipmap/backimg"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="motiur_bdjobs.bd.com.allbdjobs.BDJobsActivity"
     tools:showIn="@layout/app_bar_bdjobs">
@@ -21,7 +20,7 @@
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:paddingLeft="10dp"
@@ -34,7 +33,7 @@
                 android:layout_weight="1.0"
                 android:background="@drawable/govt"
                 android:onClick="govjob"
-                android:padding="20dp"></ImageButton>
+                android:padding="20dp"/>
 
 
             <LinearLayout
@@ -53,7 +52,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/bdjobs1"
                     android:onClick="bdJobs"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
                 <ImageButton
                     android:id="@+id/btn2"
@@ -63,7 +62,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/chakri"
                     android:onClick="chakri"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
 
             </LinearLayout>
@@ -86,7 +85,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/career"
                     android:onClick="bdcareer"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
                 <ImageButton
                     android:id="@+id/btn12"
@@ -96,7 +95,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/chakibd"
                     android:onClick="chakri_bd"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
 
             </LinearLayout>
@@ -117,7 +116,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/chakrirkhobor"
                     android:onClick="chakrirkhobor"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
                 <ImageButton
                     android:id="@+id/btn6"
@@ -127,7 +126,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/newbdjobs"
                     android:onClick="newbdjobs"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
             </LinearLayout>
 
@@ -143,12 +142,12 @@
                 <ImageButton
                     android:id="@+id/btn7"
                     android:layout_width="0.0dip"
-                    android:layout_height="77dp"
+                    android:layout_height="120dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1.0"
                     android:background="@drawable/bdcareerorg"
                     android:onClick="bdcareerorg"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
 
                 <ImageButton
@@ -159,7 +158,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/noyadigonto"
                     android:onClick="noyadigonto"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
             </LinearLayout>
 
@@ -180,7 +179,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/ejobs"
                     android:onClick="ejobs"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
                 <ImageButton
                     android:id="@+id/btn10"
@@ -190,7 +189,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/banglajobs"
                     android:onClick="banglajobs"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
             </LinearLayout>
 
@@ -211,7 +210,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/jobbd"
                     android:onClick="jobsbd"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
                 <ImageButton
                     android:id="@+id/btn13"
@@ -221,7 +220,7 @@
                     android:layout_weight="1.0"
                     android:background="@drawable/bdjobstoday"
                     android:onClick="bdjobstoday"
-                    android:padding="20dp"></ImageButton>
+                    android:padding="20dp"/>
 
             </LinearLayout>
 

@@ -23,4 +23,16 @@
 
     <include layout="@layout/content_bdjobs" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:backgroundTint="@color/ic_launcher_background"
+        android:layout_marginBottom="95sp"
+        android:layout_marginRight="20sp"
+        app:srcCompat="@android:drawable/btn_star" />
+
+
 </android.support.design.widget.CoordinatorLayout>

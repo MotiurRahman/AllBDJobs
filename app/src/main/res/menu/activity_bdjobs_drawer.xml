@@ -10,6 +10,12 @@
                 android:id="@+id/primary"
                 android:icon="@mipmap/ic_favorite_black_24dp"
                 android:title="PSC/Ebtedayee" />
+
+            <item
+                android:id="@+id/resultMarksheet"
+                android:icon="@mipmap/ic_favorite_black_24dp"
+                android:title="JSC/SSC/HSC With Marksheet" />
+
             <item
                 android:id="@+id/result"
                 android:icon="@mipmap/ic_favorite_black_24dp"

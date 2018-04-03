@@ -1,6 +1,8 @@
 package motiur_bdjobs.bd.com.allbdjobs;
 
-
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -36,7 +38,7 @@ public class BDJobsActivity extends AppCompatActivity
     //    public static String FACEBOOK_URL = "https://www.facebook.com/chakrirkhobornets/";
 //    public static String FACEBOOK_PAGE_ID = "381462145568985";
     private Animation myAnim;
-    private  Animation hyperspaceJumpAnimation;
+    private Animation hyperspaceJumpAnimation;
 
 
     ImageButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13;
@@ -58,6 +60,30 @@ public class BDJobsActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         //End toolbar
 
+        //Floting action button
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+
+                if (isNetworkConnected()) {
+
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+
+                    i.setData(Uri.parse("market://details?id=motiur_bdjobs.bd.com.allbdjobs"));
+                    startActivity(i);
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                } else {
+                    Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        //Floting action button
+
         //Button Inisilize
 
         btn1 = (ImageButton) findViewById(R.id.btn1);
@@ -77,9 +103,9 @@ public class BDJobsActivity extends AppCompatActivity
         // Animation
 
         myAnim = AnimationUtils.loadAnimation(this, R.anim.milkshake);
-       // btn11.setAnimation(myAnim);
+        // btn11.setAnimation(myAnim);
 
-         hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.motiur_anim);
+        hyperspaceJumpAnimation = AnimationUtils.loadAnimation(this, R.anim.motiur_anim);
         btn11.startAnimation(hyperspaceJumpAnimation);
 
         //End Animation
@@ -105,7 +131,7 @@ public class BDJobsActivity extends AppCompatActivity
         adView.loadAd(adRequest);
 
 
-        // Interestitial Ad
+         //Interestitial Ad
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
@@ -119,7 +145,7 @@ public class BDJobsActivity extends AppCompatActivity
 
         });
 
-        //End Interestitial Ad
+       // End Interestitial Ad
 
     }
 
@@ -160,11 +186,11 @@ public class BDJobsActivity extends AppCompatActivity
 
     public void govjob(View view) {
 
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
 
         view.startAnimation(myAnim);
 
@@ -180,12 +206,12 @@ public class BDJobsActivity extends AppCompatActivity
 
 
     public void bdJobs(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
-       view.startAnimation(myAnim);
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
+        view.startAnimation(myAnim);
 
 
         // String webURL = "http://jobs.bdjobs.com/jobsearch.asp";
@@ -200,11 +226,11 @@ public class BDJobsActivity extends AppCompatActivity
     }
 
     public void chakri(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
 
@@ -219,11 +245,11 @@ public class BDJobsActivity extends AppCompatActivity
     }
 
     public void bdcareer(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
         String webURL = "http://www.bd-career.com/";
@@ -236,11 +262,11 @@ public class BDJobsActivity extends AppCompatActivity
     }
 
     public void jobsbd(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
         String webURL = "http://www.jobsbd.com/";
@@ -253,11 +279,11 @@ public class BDJobsActivity extends AppCompatActivity
     }
 
     public void chakrirkhobor(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
         String webURL = "https://chakrirkhobor.net/";
@@ -272,11 +298,11 @@ public class BDJobsActivity extends AppCompatActivity
     }
 
     public void newbdjobs(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
         String webURL = "http://bdjobs.com.bd/";
@@ -289,11 +315,11 @@ public class BDJobsActivity extends AppCompatActivity
     }
 
     public void bdcareerorg(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
         String webURL = "https://bd-career.org/";
@@ -306,11 +332,11 @@ public class BDJobsActivity extends AppCompatActivity
     }
 
     public void noyadigonto(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
         String webURL = "http://www.nayadigantajobs.com/";
@@ -324,11 +350,11 @@ public class BDJobsActivity extends AppCompatActivity
 
 
     public void ejobs(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
         String webURL = "https://ejobscircular.com/";
@@ -341,11 +367,11 @@ public class BDJobsActivity extends AppCompatActivity
     }
 
     public void banglajobs(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
         String webURL = "http://bangla-jobs.com";
@@ -358,11 +384,11 @@ public class BDJobsActivity extends AppCompatActivity
     }
 
     public void chakri_bd(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
         String webURL = "http://www.chakrirkhobor.com.bd/";
@@ -375,11 +401,11 @@ public class BDJobsActivity extends AppCompatActivity
     }
 
     public void bdjobstoday(View view) {
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Log.d("TAG", "The interstitial wasn't loaded yet.");
-        }
+//        if (mInterstitialAd.isLoaded()) {
+//            mInterstitialAd.show();
+//        } else {
+//            Log.d("TAG", "The interstitial wasn't loaded yet.");
+//        }
         view.startAnimation(myAnim);
 
         String webURL = "http://www.bdjobstoday.com/";
@@ -531,11 +557,11 @@ public class BDJobsActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.primary) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             // Handle the camera action
 
             String webURL = "http://dperesult.teletalk.com.bd/dpe.php";
@@ -545,11 +571,11 @@ public class BDJobsActivity extends AppCompatActivity
             startActivity(intent);
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         } else if (id == R.id.result) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             // Handle the camera action
 
             String webURL = "http://www.educationboardresults.gov.bd/";
@@ -558,12 +584,26 @@ public class BDJobsActivity extends AppCompatActivity
             intent.putExtra("URL", webURL);
             startActivity(intent);
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-        } else if (id == R.id.nuresult) {
+        }else if (id == R.id.resultMarksheet) {
             if (mInterstitialAd.isLoaded()) {
                 mInterstitialAd.show();
             } else {
                 Log.d("TAG", "The interstitial wasn't loaded yet.");
             }
+            // Handle the camera action
+
+            String webURL = "http://eboardresults.com/app/";
+
+            Intent intent = new Intent(getApplicationContext(), webActivity.class);
+            intent.putExtra("URL", webURL);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+        } else if (id == R.id.nuresult) {
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             // Handle the camera action
 
             String webURL = "http://www.nu.edu.bd/results/";
@@ -589,11 +629,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.new_jobs) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             String webURL = "http://jobs.bdjobs.com/m/Otherjobs.aspx?jobtype=new";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -602,11 +642,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.govt_jobs) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             String webURL = "http://jobs.bdjobs.com/m/Otherjobs.aspx?jobtype=government";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -615,11 +655,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.non_govt_jobs) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             String webURL = "http://www.chakrirkhobor.com.bd/non-government-jobs/";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -628,11 +668,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.it_jobs) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             String webURL = "http://jobs.bdjobs.com/m/jobsearch.aspx?fcatid=8";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -641,11 +681,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.engineering_jobs) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             String webURL = "http://jobs.bdjobs.com/m/jobsearch.aspx?fcatid=5";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -654,11 +694,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.textile_jobs) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             String webURL = "http://jobs.bdjobs.com/m/jobsearch.aspx?fcatid=6";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -667,11 +707,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.bank_jobs) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             String webURL = "http://jobs.bdjobs.com/m/jobsearch.aspx?fcatid=2";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -680,11 +720,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.forreign_jobs) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             String webURL = "https://www.naukri.com/international-jobs";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -693,11 +733,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.notice) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             String webURL = "http://www.bpsc.gov.bd/site/view/notices/%E0%A6%A8%E0%A7%8B%E0%A6%9F%E0%A6%BF%E0%A6%B6-";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -706,11 +746,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.bcs_notice) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-            }
+//            if (mInterstitialAd.isLoaded()) {
+//                mInterstitialAd.show();
+//            } else {
+//                Log.d("TAG", "The interstitial wasn't loaded yet.");
+//            }
             String webURL = "http://www.bpsc.gov.bd/site/view/psc_exam/BCS%20Examination/%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%B8-%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
