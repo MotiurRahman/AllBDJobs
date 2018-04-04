@@ -14,7 +14,7 @@
             <item
                 android:id="@+id/resultMarksheet"
                 android:icon="@mipmap/ic_favorite_black_24dp"
-                android:title="JSC/SSC/HSC With Marksheet" />
+                android:title="JSC/SSC/HSC:Marksheet" />
 
             <item
                 android:id="@+id/result"

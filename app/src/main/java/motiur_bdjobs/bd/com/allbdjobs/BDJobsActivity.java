@@ -31,6 +31,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.onesignal.OneSignal;
 
 public class BDJobsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -53,6 +54,13 @@ public class BDJobsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bdjobs);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
 
 
         //Toolbar
