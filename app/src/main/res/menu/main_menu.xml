@@ -8,7 +8,8 @@
         android:id="@+id/action_share"
         android:icon="@mipmap/ic_share_black_24dp"
         android:title="@string/share"
-        app:showAsAction="always"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
 
 
@@ -21,10 +22,16 @@
         app:showAsAction="never"/>
 
     <item
-        android:id="@+id/action_apps"
+        android:id="@+id/action_update"
         android:orderInCategory="300"
+        android:title="@string/action_update"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/action_more"
+        android:orderInCategory="400"
         android:icon="@mipmap/ic_note_add_black_24dp"
-        android:title="@string/action_apps"
+        android:title="@string/action_more"
         app:showAsAction="never"/>
 
 </menu>

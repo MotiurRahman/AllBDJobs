@@ -1,22 +1,46 @@
 <resources>
     <string name="app_name">All BD Jobs</string>
 
-    <string name="action_apps">More Apps</string>
+    <string name="action_more">More Apps</string>
     <string name="home">Home</string>
     <string name="action_ratings">Feedback</string>
+    <string name="action_update">Update this App</string>
     <string name="share">share</string>
+
+
+    <string name="nu">NU Results</string>
+    <string name="primary">PSC/Ebtedayee</string>
+    <string name="secondary_mark">JSC/SSC/HSC:Marksheet</string>
+    <string name="moreResult">More Results</string>
+
+    <string name="jobNotice">Jobs Notice</string>
+    <string name="bcsNotice">BCS Notice</string>
+
+
+    <string name="newJob">New Jobs(24hrs)</string>
+    <string name="govtJobs">Govt Jobs</string>
+    <string name="notGovtJobs">Non Govt Jobs</string>
+    <string name="itJobs">IT Jobs</string>
+    <string name="engJobs">Engineering/Architech</string>
+    <string name="textJobs">Textile Jobs</string>
+    <string name="marktingJObs">Marketing/Sales</string>
+    <string name="bankJobs">Bank Jobs</string>
+
+    <string name="locationWise">Location Wise Jobs</string>
+
+
 
 
     <!-- -
         This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
-    <string name="banner_ad_unit_id">ca-app-pub-4951262838901192/2771160236</string>
-    <string name="interstitial_ad_unit_id">ca-app-pub-4951262838901192/5083420815</string>
+    <!--<string name="banner_ad_unit_id">ca-app-pub-4951262838901192/2771160236</string>-->
+    <!--<string name="interstitial_ad_unit_id">ca-app-pub-4951262838901192/5083420815</string>-->
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
-    <!--<string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>-->
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
 
 </resources>

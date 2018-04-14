@@ -1,12 +1,16 @@
-plugins {
-    id 'com.onesignal.androidsdk.onesignal-gradle-plugin' version '0.8.1'
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/'}
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.8.1'
+    }
 }
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 
 repositories {
     maven { url 'https://maven.google.com' }
 }
-
 
 apply plugin: 'com.android.application'
 
@@ -17,8 +21,8 @@ android {
         applicationId "motiur_bdjobs.bd.com.allbdjobs"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 12
-        versionName "2.8"
+        versionCode 15
+        versionName "2.9.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
                 onesignal_app_id: '2ef69ba8-17c3-4008-b0ae-13f4cd39fd11',
@@ -40,12 +44,12 @@ dependencies {
 
     implementation 'com.android.support:design:26.1.0'
     testImplementation 'junit:junit:4.12'
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
+    implementation 'com.google.android.gms:play-services-ads:15.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile 'com.google.firebase:firebase-core:11.8.0'
-    compile 'com.google.firebase:firebase-messaging:11.8.0'
+    compile 'com.google.firebase:firebase-core:15.0.0'
+    compile 'com.google.firebase:firebase-messaging:15.0.0'
     compile 'com.onesignal:OneSignal:[3.8.3, 3.99.99]'
 
 

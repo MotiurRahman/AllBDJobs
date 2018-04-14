@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -39,11 +40,12 @@ public class webActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 
-        ActionBar motiurbar = getSupportActionBar();
-        motiurbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0C9119")));
-        if (motiurbar != null) {
-            motiurbar.setDisplayHomeAsUpEnabled(true);
-            motiurbar.setHomeAsUpIndicator(R.mipmap.ic_launcher);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null) {
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0C9119")));
+            actionBar.setHomeAsUpIndicator(R.mipmap.ic_launcher);
         }
 
         //Check internet
@@ -55,7 +57,7 @@ public class webActivity extends AppCompatActivity {
         }
 
         // Webview
-        webView = (WebView) findViewById(R.id.web);
+        webView = findViewById(R.id.web);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
@@ -71,7 +73,7 @@ public class webActivity extends AppCompatActivity {
         // chakrirkhobor.setVerticalScrollBarEnabled(false);
         webView.setHorizontalScrollBarEnabled(false);
         webSettings.setDomStorageEnabled(true);
-        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
         webSettings.setUseWideViewPort(true);
 
         webSettings.setSavePassword(true);
@@ -87,11 +89,11 @@ public class webActivity extends AppCompatActivity {
         webView.loadUrl(URL);
         webView.setWebViewClient(new mywebClient());
 
-        proBar = (ProgressBar) findViewById(R.id.progressBar1);
+        proBar =  findViewById(R.id.progressBar1);
 
 
         // Load an ad into the AdMob banner view.
-        adView = (AdView) findViewById(R.id.adView);
+        adView =  findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
                 .setRequestAgent("android_studio:ad_template").build();
         adView.loadAd(adRequest);
@@ -129,25 +131,21 @@ public class webActivity extends AppCompatActivity {
     //End webview progress bar
 
 
+
     //WebView back button
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_BACK:
-                    if (webView.canGoBack()) {
-                        webView.goBack();
-                    }
-                    return true;
-            }
-
+    public void onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            super.onBackPressed();
         }
-        return super.onKeyDown(keyCode, event);
+
     }
 
     //end WebView back button
+
 
     //For internet connection
 
@@ -158,39 +156,6 @@ public class webActivity extends AppCompatActivity {
     }
     //End internet connection
 
-
-    /**
-     * Called when leaving the activity
-     */
-    @Override
-    public void onPause() {
-        if (adView != null) {
-            adView.pause();
-        }
-        super.onPause();
-    }
-
-    /**
-     * Called when returning to the activity
-     */
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (adView != null) {
-            adView.resume();
-        }
-    }
-
-    /**
-     * Called before the activity is destroyed
-     */
-    @Override
-    public void onDestroy() {
-        if (adView != null) {
-            adView.destroy();
-        }
-        super.onDestroy();
-    }
 
 
     //For menu view

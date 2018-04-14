@@ -9,62 +9,34 @@
             <item
                 android:id="@+id/primary"
                 android:icon="@mipmap/ic_favorite_black_24dp"
-                android:title="PSC/Ebtedayee" />
+                android:title="@string/primary" />
 
             <item
                 android:id="@+id/resultMarksheet"
                 android:icon="@mipmap/ic_favorite_black_24dp"
-                android:title="JSC/SSC/HSC:Marksheet" />
-
-            <item
-                android:id="@+id/result"
-                android:icon="@mipmap/ic_favorite_black_24dp"
-                android:title="JSC/SSC/HSC" />
+                android:title="@string/secondary_mark" />
 
             <item
                 android:id="@+id/nuresult"
                 android:icon="@mipmap/ic_favorite_black_24dp"
-                android:title="NU Results" />
+                android:title="@string/nu" />
+
+            <item
+                android:id="@+id/moreResult"
+                android:icon="@mipmap/ic_favorite_black_24dp"
+                android:title="@string/moreResult" />
         </menu>
     </item>
 
 
-    <item android:title="Recent Job/ Notice">
+    <item android:title="Recent Job">
         <menu>
             <item
                 android:id="@+id/new_jobs"
-                android:icon="@mipmap/ic_today_black_18dp"
-                android:title="New Jobs(24hrs)" />
-
-            <item
-                android:id="@+id/notice"
-                android:icon="@mipmap/ic_note_add_black_24dp"
-                android:title="Jobs Notice" />
-            <item
-                android:id="@+id/bcs_notice"
-                android:icon="@mipmap/ic_note_add_black_24dp"
-                android:title="BCS Notice" />
+                android:icon="@drawable/newjobsicon"
+                android:title="@string/newJob" />
         </menu>
     </item>
-
-    <!--<group android:checkableBehavior="single">-->
-
-        <!--<item-->
-            <!--android:id="@+id/primary"-->
-            <!--android:icon="@mipmap/ic_favorite_black_24dp"-->
-            <!--android:title="Primary/Eptadai" />-->
-        <!--<item-->
-            <!--android:id="@+id/result"-->
-            <!--android:icon="@mipmap/ic_favorite_black_24dp"-->
-            <!--android:title="JSC/SSC/HSC" />-->
-
-        <!--<item-->
-            <!--android:id="@+id/nuresult"-->
-            <!--android:icon="@mipmap/ic_favorite_black_24dp"-->
-            <!--android:title="NU Results" />-->
-
-    <!--</group>-->
-
 
 
     <item android:title="Recommended Category">
@@ -72,43 +44,57 @@
 
             <item
                 android:id="@+id/govt_jobs"
-                android:icon="@mipmap/ic_loyalty_black_24dp"
-                android:title="Govt Jobs" />
+                android:icon="@drawable/jobs"
+                android:title="@string/govtJobs" />
 
 
             <item
                 android:id="@+id/non_govt_jobs"
-                android:icon="@mipmap/ic_loyalty_black_24dp"
-                android:title="Non Govt Jobs" />
+                android:icon="@drawable/jobs"
+                android:title="@string/notGovtJobs" />
             <item
                 android:id="@+id/it_jobs"
-                android:icon="@drawable/ic_menu_send"
-                android:title="IT Jobs" />
+                android:icon="@drawable/jobs"
+                android:title="@string/itJobs" />
 
             <item
                 android:id="@+id/engineering_jobs"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/jobs"
                 android:title="Engineering/Architech" />
             <item
                 android:id="@+id/textile_jobs"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Textile Jobs" />
+                android:icon="@drawable/jobs"
+                android:title="@string/textJobs" />
 
             <item
                 android:id="@+id/marketing_jobs"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Marketing/Sales" />
+                android:icon="@drawable/jobs"
+                android:title="@string/marktingJObs" />
 
 
             <item
                 android:id="@+id/bank_jobs"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Bank Jobs" />
+                android:icon="@drawable/jobs"
+                android:title="@string/bankJobs" />
             <item
                 android:id="@+id/forreign_jobs"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Foreign Jobs" />
+                android:icon="@drawable/jobs"
+                android:title="@string/locationWise" />
 
+        </menu>
+    </item>
+
+    <item android:title="Job Notice">
+        <menu>
+
+            <item
+                android:id="@+id/notice"
+                android:icon="@mipmap/ic_note_add_black_24dp"
+                android:title="@string/jobNotice" />
+            <item
+                android:id="@+id/bcs_notice"
+                android:icon="@mipmap/ic_note_add_black_24dp"
+                android:title="@string/bcsNotice" />
         </menu>
     </item>
 
