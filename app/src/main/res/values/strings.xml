@@ -36,11 +36,11 @@
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
     <!--<string name="banner_ad_unit_id">ca-app-pub-4951262838901192/2771160236</string>-->
-    <!--<string name="interstitial_ad_unit_id">ca-app-pub-4951262838901192/5083420815</string>-->
+    <string name="interstitial_ad_unit_id">ca-app-pub-4951262838901192/3294954784</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
+    <!--<string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>-->
 
 </resources>

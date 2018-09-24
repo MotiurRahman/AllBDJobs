@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -21,10 +23,8 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+
 
 public class webActivity extends AppCompatActivity {
 
@@ -42,7 +42,6 @@ public class webActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null) {
-            actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0C9119")));
             actionBar.setHomeAsUpIndicator(R.mipmap.ic_launcher);
@@ -86,18 +85,19 @@ public class webActivity extends AppCompatActivity {
         String URL = getIntent().getStringExtra("URL");
 
 
-        webView.loadUrl(URL);
+
         webView.setWebViewClient(new mywebClient());
+        webView.loadUrl(URL);
 
         proBar =  findViewById(R.id.progressBar1);
 
+        if (Build.VERSION.SDK_INT >= 21) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor("#008000"));
+        }
 
-        // Load an ad into the AdMob banner view.
-        adView =  findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder()
-                .setRequestAgent("android_studio:ad_template").build();
-        adView.loadAd(adRequest);
-        MobileAds.initialize(this, "ca-app-pub-4951262838901192~9336209793");
 
 
     }
