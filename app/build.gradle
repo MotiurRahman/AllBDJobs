@@ -20,8 +20,8 @@ android {
         applicationId "motiur_bdjobs.bd.com.allbdjobs"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 20
-        versionName "3.0"
+        versionCode 23
+        versionName "3.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
                 onesignal_app_id: '2ef69ba8-17c3-4008-b0ae-13f4cd39fd11',
