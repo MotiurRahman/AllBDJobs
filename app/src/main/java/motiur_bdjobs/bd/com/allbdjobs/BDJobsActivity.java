@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.util.Log;
+import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -28,6 +29,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -35,8 +37,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 import com.onesignal.OneSignal;
 
 public class BDJobsActivity extends AppCompatActivity
@@ -54,8 +54,6 @@ public class BDJobsActivity extends AppCompatActivity
   //  ImageButton btn11;
 
 
-    private InterstitialAd mInterstitialAd;
-    AdView adView;
 
 
     @Override
@@ -125,27 +123,6 @@ public class BDJobsActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-//        // Load an ad into the AdMob banner view.
-//        MobileAds.initialize(this, "ca-app-pub-4951262838901192~9336209793");
-//
-//
-//
-//        //Interestitial Ad
-//        mInterstitialAd = new InterstitialAd(this);
-//        mInterstitialAd.setAdUnitId("ca-app-pub-4951262838901192/5083420815");
-//        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-//
-//        mInterstitialAd.setAdListener(new AdListener() {
-//            @Override
-//            public void onAdClosed() {
-//                // Load the next interstitial.
-//                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-//            }
-//
-//        });
-//
-//        // End Interestitial Ad
-
         if (Build.VERSION.SDK_INT >= 21) {
             Window window = getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -153,29 +130,41 @@ public class BDJobsActivity extends AppCompatActivity
             window.setStatusBarColor(Color.parseColor("#008000"));
         }
 
-        // Webview
+        //Improve wevView performance
+
         jobacha = (WebView) findViewById(R.id.web1);
+        jobacha.clearCache(true);
         WebSettings webSettings = jobacha.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        //Improve wevView performance
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        webSettings.setAppCacheEnabled(false);
 
-        jobacha.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-        jobacha.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        jobacha.getSettings().setAppCacheEnabled(true);
-        jobacha.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-        jobacha.setInitialScale(1);
-        jobacha.getSettings().setDisplayZoomControls(false);
-        jobacha.getSettings().setBuiltInZoomControls(true);
-        // chakrirkhobor.setVerticalScrollBarEnabled(false);
-        jobacha.setHorizontalScrollBarEnabled(false);
-        webSettings.setDomStorageEnabled(true);
-        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        //Test
+        webSettings.setLoadWithOverviewMode(true);
         webSettings.setUseWideViewPort(true);
+        //
+
+        webSettings.setDisplayZoomControls(false);
+        webSettings.setDefaultZoom(WebSettings.ZoomDensity.FAR);
+        webSettings.setBuiltInZoomControls(true);
+
+
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
 
         webSettings.setSavePassword(true);
         webSettings.setSaveFormData(true);
+
+
         webSettings.setEnableSmoothTransition(true);
+
+        jobacha.setInitialScale(1);
+        jobacha.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        jobacha.setHorizontalScrollBarEnabled(false);
+
+
+        ///
 
 
         jobacha.loadUrl("https://jobache.com/");
@@ -183,6 +172,27 @@ public class BDJobsActivity extends AppCompatActivity
 
         proBar = (ProgressBar) findViewById(R.id.progressBar1);
 
+//        jobacha.setDownloadListener(new DownloadListener() {
+//            @Override
+//            public void onDownloadStart(String url, String userAgent,
+//                                        String contentDisposition, String mimetype,
+//                                        long contentLength) {
+//
+//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+//            }
+//        });
+
+        jobacha.setWebViewClient(new WebViewClient() {
+            public boolean shouldOverrideUrlLoading (WebView view, String url) {
+                if (url.endsWith(".pdf")) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    // if want to download pdf manually create AsyncTask here
+                    // and download file
+                    return true;
+                }
+                return false;
+            }
+        });
 
 
 
@@ -195,7 +205,7 @@ public class BDJobsActivity extends AppCompatActivity
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
             proBar.setVisibility(View.GONE);
-            //setTitle(view.getTitle());
+            setTitle(view.getTitle());
 
         }
 
@@ -475,24 +485,32 @@ public class BDJobsActivity extends AppCompatActivity
     }
     //End internet connection
 
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main_menu, menu);
+//
+//        // Locate MenuItem with ShareActionProvider
+//        MenuItem item = menu.findItem(R.id.action_home);
+//
+//        // Fetch and store ShareActionProvider
+//        ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+//
+//        if (mShareActionProvider != null) {
+//            Intent shareIntent = new Intent();
+//            shareIntent.setAction(Intent.ACTION_SEND);
+//            shareIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=motiur_bdjobs.bd.com.allbdjobs");
+//            shareIntent.setType("text/plain");
+//            mShareActionProvider.setShareIntent(shareIntent);
+//        }
+//
+//
+//        return true;
+//    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-
-        // Locate MenuItem with ShareActionProvider
-        MenuItem item = menu.findItem(R.id.action_share);
-        // Fetch and store ShareActionProvider
-        ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
-
-        if (mShareActionProvider != null) {
-            Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=motiur_bdjobs.bd.com.allbdjobs");
-            shareIntent.setType("text/plain");
-            mShareActionProvider.setShareIntent(shareIntent);
-        }
-
-
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
 
@@ -517,6 +535,22 @@ public class BDJobsActivity extends AppCompatActivity
 //
 //
 //        }
+
+        if (id == R.id.action_home) {
+
+            if (isNetworkConnected()) {
+
+                Intent homeIntent = new Intent(this, BDJobsActivity.class);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+            } else {
+                Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
+            }
+
+
+        }
+
 
         if (id == R.id.action_ratings) {
 
@@ -628,35 +662,25 @@ public class BDJobsActivity extends AppCompatActivity
 //            }
             // Handle the camera action
 
-            String webURL = "http://180.211.137.51:5839/";
+            String webURL = "https://jobache.com/psc-results/";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
             intent.putExtra("URL", webURL);
             startActivity(intent);
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         } else if (id == R.id.resultMarksheet) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
             // Handle the camera action
 
-            String webURL = "https://eboardresults.com/app/";
+            String webURL = "https://jobache.com/ssc-hsc-jsc-results/";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
             intent.putExtra("URL", webURL);
             startActivity(intent);
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         } else if (id == R.id.nuresult) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
             // Handle the camera action
 
-            String webURL = "http://www.nu.ac.bd/results/";
+            String webURL = "https://jobache.com/national-university-result/";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
             intent.putExtra("URL", webURL);
@@ -691,11 +715,6 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.new_jobs) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
             String webURL = "http://jobs.bdjobs.com/m/Otherjobs.aspx?jobtype=new";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -704,11 +723,6 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.govt_jobs) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
             String webURL = "http://jobs.bdjobs.com/m/Otherjobs.aspx?jobtype=government";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -717,11 +731,6 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.non_govt_jobs) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
             String webURL = "http://www.chakrirkhobor.com.bd/non-government-jobs/";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -730,11 +739,6 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.it_jobs) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
             String webURL = "http://jobs.bdjobs.com/m/jobsearch.aspx?fcatid=8";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -743,11 +747,6 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.engineering_jobs) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
             String webURL = "http://jobs.bdjobs.com/m/jobsearch.aspx?fcatid=5";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -756,11 +755,6 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.textile_jobs) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
             String webURL = "http://jobs.bdjobs.com/m/jobsearch.aspx?fcatid=6";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -769,11 +763,6 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         }else if (id == R.id.marketing_jobs) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
             String webURL = "http://jobs.bdjobs.com/m/jobsearch.aspx?fcatid=9";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -782,12 +771,11 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         }  else if (id == R.id.bank_jobs) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
+
             String webURL = "http://jobs.bdjobs.com/m/jobsearch.aspx?fcatid=2";
+
+
+           // String webURL = " http://result.dpe.gov.bd/";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
             intent.putExtra("URL", webURL);
@@ -795,11 +783,7 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.forreign_jobs) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
+
             //String webURL = "https://www.naukri.com/international-jobs";
             String webURL = "http://jobs.bdjobs.com/m/Locationwisejobs.aspx?jobtype=overseas";
 
@@ -809,11 +793,7 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.notice) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
+
             String webURL = "http://www.bpsc.gov.bd/site/view/notices/%E0%A6%A8%E0%A7%8B%E0%A6%9F%E0%A6%BF%E0%A6%B6-";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);
@@ -822,11 +802,7 @@ public class BDJobsActivity extends AppCompatActivity
             overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 
         } else if (id == R.id.bcs_notice) {
-//            if (mInterstitialAd.isLoaded()) {
-//                mInterstitialAd.show();
-//            } else {
-//                Log.d("TAG", "The interstitial wasn't loaded yet.");
-//            }
+
             String webURL = "http://www.bpsc.gov.bd/site/view/psc_exam/BCS%20Examination/%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A6%BF%E0%A6%8F%E0%A6%B8-%E0%A6%AA%E0%A6%B0%E0%A7%80%E0%A6%95%E0%A7%8D%E0%A6%B7%E0%A6%BE";
 
             Intent intent = new Intent(getApplicationContext(), webActivity.class);

@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
@@ -17,20 +18,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.DownloadListener;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdView;
 
 
 public class webActivity extends AppCompatActivity {
 
     WebView webView;
     ProgressBar proBar;
-    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,7 @@ public class webActivity extends AppCompatActivity {
 
         // Webview
         webView = findViewById(R.id.web);
+        webView.clearCache(true);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
@@ -64,7 +65,7 @@ public class webActivity extends AppCompatActivity {
 
         webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
         webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        webView.getSettings().setAppCacheEnabled(true);
+        webView.getSettings().setAppCacheEnabled(false);
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.setInitialScale(1);
         webView.getSettings().setDisplayZoomControls(false);
@@ -97,6 +98,31 @@ public class webActivity extends AppCompatActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.parseColor("#008000"));
         }
+
+//        webView.setDownloadListener(new DownloadListener() {
+//            @Override
+//            public void onDownloadStart(String url, String userAgent,
+//                                        String contentDisposition, String mimetype,
+//                                        long contentLength) {
+//
+//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+//            }
+//        });
+
+
+        webView.setWebViewClient(new WebViewClient() {
+            public boolean shouldOverrideUrlLoading (WebView view, String url) {
+                if (url.endsWith(".pdf")) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+                    // if want to download pdf manually create AsyncTask here
+                    // and download file
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
 
 
 

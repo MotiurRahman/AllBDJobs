@@ -4,14 +4,20 @@
     tools:context="motiur_bdjobs.bd.com.allbdjobs.test">
 
 
-    <item
-        android:id="@+id/action_share"
-        android:icon="@mipmap/ic_share_black_24dp"
-        android:title="@string/share"
-        android:orderInCategory="100"
-        app:showAsAction="ifRoom"
-        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
+    <!--<item-->
+        <!--android:id="@+id/action_share"-->
+        <!--android:icon="@mipmap/ic_share_black_24dp"-->
+        <!--android:title="@string/share"-->
+        <!--android:orderInCategory="100"-->
+        <!--app:showAsAction="ifRoom"-->
+        <!--app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>-->
 
+    <item
+        android:id="@+id/action_home"
+        android:orderInCategory="100"
+        android:icon="@drawable/home"
+        android:title="@string/home"
+        app:showAsAction="always" />
 
 
     <item

@@ -4,8 +4,9 @@
     tools:context="motiur_bdjobs.bd.com.allbdjobs.test">
     <item
         android:id="@+id/home"
-        android:orderInCategory="100"
+        android:icon="@drawable/home"
         android:title="@string/home"
+        android:orderInCategory="100"
         app:showAsAction="always" />
 
     <item
